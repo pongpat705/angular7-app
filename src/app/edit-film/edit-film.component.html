@@ -1,0 +1,20 @@
+
+
+ <form>
+   <div class="form-group">
+     <label for="inputTitle">Film Title</label>
+     <input type="text" class="form-control" [(ngModel)]="film.title" name="title" id="title">
+     <small id="titleHelp" class="form-text text-muted"></small>
+   </div>
+   <div class="form-group">
+     <label for="inputDescription">Film Description</label>
+     <input type="text" class="form-control" [(ngModel)]="film.description" name="description" id="description">
+     <small id="descriptionHelp" class="form-text text-muted"></small>
+   </div>
+   <div class="form-group">
+     <label for="inputReleaseYear">Film Release Year</label>
+     <input type="text" class="form-control" [(ngModel)]="film.releaseYear" name="releaseYear" id="releaseYear">
+     <small id="releaseYearHelp" class="form-text text-muted"></small>
+   </div>
+   <button type="submit" class="btn btn-primary" (click)="updateFilm(film)">Update</button>
+ </form>
