@@ -9,15 +9,19 @@ import { FilmsComponent } from './films/films.component';
 import { EditFilmComponent } from './edit-film/edit-film.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatTableModule } from '@angular/material'  
+import { MatTableModule } from '@angular/material'
 
 import { AgmCoreModule } from '@agm/core';
+import { MapsComponent } from './maps/maps.component';
+import { CalendarsComponent } from './calendars/calendars.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FilmsComponent,
-    EditFilmComponent
+    EditFilmComponent,
+    MapsComponent,
+    CalendarsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,7 @@ import { AgmCoreModule } from '@agm/core';
     BrowserAnimationsModule,
     MatTableModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCNxYeU68llqPqbQkyzS6GsT61OG0naNqw',
+      apiKey: 'AIzaSyD9JAnt6ZMaMiDP74s0K6gWrkme9YrXWqY',
       libraries: ['geometry']
     })
   ],
