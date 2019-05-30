@@ -9,11 +9,20 @@ import { FilmsComponent } from './films/films.component';
 import { EditFilmComponent } from './edit-film/edit-film.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatTableModule } from '@angular/material'
+
+import {
+  MatTableModule, MatDatepickerModule,
+  MatFormFieldModule, MatNativeDateModule,
+  MatInputModule, MatPaginatorModule
+} from '@angular/material'
 
 import { AgmCoreModule } from '@agm/core';
 import { MapsComponent } from './maps/maps.component';
 import { CalendarsComponent } from './calendars/calendars.component';
+
+let materailImportedModule = [MatTableModule, MatDatepickerModule,
+MatFormFieldModule, MatNativeDateModule,
+MatInputModule, MatPaginatorModule];
 
 @NgModule({
   declarations: [
@@ -29,11 +38,14 @@ import { CalendarsComponent } from './calendars/calendars.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatTableModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD9JAnt6ZMaMiDP74s0K6gWrkme9YrXWqY',
       libraries: ['geometry']
-    })
+    }),
+    materailImportedModule
+  ],
+  exports: [
+    materailImportedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

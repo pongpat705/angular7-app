@@ -56,7 +56,7 @@ export class MapsComponent implements OnInit {
 
 
       var service = new google.maps.DistanceMatrixService();
-      let drivingMode = 'DRIVING';
+      let drivingMode = google.maps.TravelMode['DRIVING'];
       service.getDistanceMatrix(
         {
           'origins': [a],

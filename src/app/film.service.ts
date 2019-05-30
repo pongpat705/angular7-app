@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Film } from './film';
+import { Page } from './page';
 
 const httpOption = {
   headers : new HttpHeaders({ 'Content-Type' : 'application/json' })
@@ -20,11 +21,11 @@ export class FilmService {
     private http : HttpClient
   ) { }
 
-  getFilms(): Observable<Film[]>{
-    return this.http.get<Film[]>(this.filmsUrl)
+  getFilms(page, size): Observable<Page>{
+    return this.http.get<Page>(this.filmsUrl+'?page='+page+'&size='+size)
       .pipe(
         tap(_ => console.log('fetched filmes')),
-        catchError(this.handleError('getFilms', []))
+        catchError(this.handleError('getFilms', null))
       )
   }
 
