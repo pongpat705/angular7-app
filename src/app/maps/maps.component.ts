@@ -43,9 +43,10 @@ export class MapsComponent implements OnInit {
         console.log(locations[x]);
 
         var locationX = new google.maps.LatLng(locations[x].lat, locations[x].lng);
-        var marker = new google.maps.Marker({position: locationX, map: this.map});
 
+        var marker = new google.maps.Marker({position: locationX, map: this.map, draggable:true});
         marker.addListener('click', this.clickMarker);
+        
       }
 
       const a = new google.maps.LatLng(51.679441, 7.792098);

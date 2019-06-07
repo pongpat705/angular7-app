@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Film } from './film';
 import { Page } from './page';
+import { saveAs } from 'file-saver';
 
 const httpOption = {
   headers : new HttpHeaders({ 'Content-Type' : 'application/json' })
@@ -16,6 +17,8 @@ export class FilmService {
 
   private filmsUrl = 'http://localhost:8080/moji/api/allFilms';
   private filmUrl = 'http://localhost:8080/moji/api/getFilmById';
+
+  private pdfUrl = 'http://localhost:2223/export/pdf?billId=13';
 
   constructor(
     private http : HttpClient
@@ -36,6 +39,19 @@ export class FilmService {
         catchError(this.handleError('getFilmById', null))
       )
   }
+
+  public downloadPDF(): any {
+    var mediaType = 'application/pdf';
+
+    this.http.get(this.pdfUrl, { responseType: 'blob'}).subscribe(
+        (response) => {
+            var blob = new Blob([response], { type: mediaType });
+            console.log(response);
+            saveAs(blob, 'report.pdf');
+        },
+        e => { this.handleError('downloadPDF', null); }
+    );
+}
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

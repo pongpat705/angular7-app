@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { FilmService } from '../film.service';
 
 @Component({
   selector: 'app-calendars',
@@ -13,9 +14,13 @@ export class CalendarsComponent implements OnInit {
 
   mydate : Date;
 
-  constructor() { }
+  constructor(
+    private filmService: FilmService
+  ) { }
 
   ngOnInit() {
+    this.filmService.downloadPDF();
   }
+
 
 }
